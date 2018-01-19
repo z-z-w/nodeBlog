@@ -1,0 +1,89 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.backImg{
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+    background: url("../img/backImg.png") no-repeat 0% 70%;
+    text-align: center;
+}
+.head{
+    height: 80px;
+    width: 80px;
+}
+.listBox{
+    margin: 30px 30px;
+    padding: 20px 20px;
+    background-color: #f8f8f8;
+}
+.listBox>h3, .info{
+    padding: 10px 0;
+    text-align: center;
+}
+.info>span{
+    color: #00B7FF;
+}
+.clear>p{
+    height: 30px;
+    line-height: 30px;
+    margin: auto;
+    text-align: center;
+}
+.previous{
+    display: inline-block;
+    float: left;
+}
+.next{
+    display: inline-block;
+    float: right;
+}
+.member{
+    padding: 10px 20px;
+    margin: 30px 30px;
+    background-color: #f8f8f8;
+}
+.member>h3{
+    padding-bottom: 8px;
+    text-align: center;
+    border-bottom: solid 1px #337ab7;
+}
+.btn-login{
+    width: 100%;
+}
+.textCenter{
+    color: gold;
+    text-align: center;
+}
+.colDanger{
+    color: orange;
+}
+
+.em{
+    font-size: 15px;
+    float: right;
+}
+.submit{
+    height: 90px;
+}
+.bgDanger{
+    margin: 20px auto;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    background-color: #00B7FF;
+    text-align: center;
+}
+.messageList{
+    padding: 20px 5px;
+}
+.message{
+    padding: 10px 5px;
+    border-bottom: #3c3c3c 1px dashed;
+}
+.comment-page {
+    list-style: none;
+    text-align: center;
+}
+

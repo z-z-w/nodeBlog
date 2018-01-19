@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="../../public/css/main.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap.css">
+    <script src="../../public/js/jquery-3.2.1.min.js"></script>
+    <script src="../../public/js/bootstrap.min.js"></script>
+    <script src="../../public/js/index.js"></script>
+</head>
+<body>
+<header>
+    <div class="backImg"><img src="../../public/img/head.jpg" class="img-circle head"></div>
+</header>
+
+<nav class="navbar navbar-default ">
+    <div class="container ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#list-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse " id="list-collapse">
+            <ul class="nav navbar-nav" id="list-menu">
+                {%if category == ''%}
+                <li class="active"><a href="/">首页</a></li>
+                {%else%}
+                <li ><a href="/">首页</a></li>
+                {%endif%}
+                {% for c in categories%}
+                {%if category == c.id%}
+                <li class="active"><a href="/?category={{c.id}}">{{c.name}}</a></li>
+                {%else%}
+                <li ><a href="/?category={{c.id}}">{{c.name}}</a></li>
+                {%endif%}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            {%block content%}{%endblock%}
+        </div>
+
+
+
+        <div class="col-md-4">
+            {% if userInfo._id %}
+            <div class="member" id="userInfo" >
+                <h3>用户信息</h3>
+                <p><span class="colDark">{{userInfo.username}}</span></p>
+
+                {% if userInfo.isAdmin %}
+                <p>
+                    <span class="colDanger">你好，管理员! </span>
+                    <a href="/admin">进入管理</a>
+                </p>
+                {% else %}
+                <p><span class="colDanger">你好，欢迎光临我的博客！</span></p>
+                {% endif %}
+                <p><span class="colDark"><a href="javascript:;" id="logout">退出</a></span></p>
+            </div>
+
+            {% else %}
+            <div class="form-horizontal">
+                <div class="member" id="loginBox" >
+                    <h3>登录</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span class="glyphicon glyphicon-user"  aria-hidden="true"></span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-login">登录</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <p>还没注册 ? <a href="javascript:;">马上注册</a></p>
+                        </div>
+                    </div>
+                    <p class="colWarning textCenter"></p>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+                <div class="member" id="registerBox" style="display: none">
+                    <h3>注册</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span class="glyphicon glyphicon-user"  aria-hidden="true"></span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="repassword" placeholder="确认密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-login">注册</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <p>已有账号 ? <a href="javascript:;">点击登陆</a></p>
+                        </div>
+                    </div>
+                    <p class="colWarning textCenter"></p>
+                </div>
+            </div>
+            {%endif%}
+
+            <div class="member">
+                <h3 >社区信息</h3>
+                <p><a href="#" >中文社区</a></p>
+                <p><a href="#">英文社区</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

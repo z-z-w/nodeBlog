@@ -1,0 +1,37 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+{% for content in contents%}
+<div class="listBox">
+    <h3>{{content.title}}</h3>
+    <p class="info">
+        作者：<span>{{content.user.username}}</span> -
+        时间：<span>{{content.addTime|date('Y-m-d H:i:s', -8*60)}}</span> -
+        阅读：<span>{{content.views}}</span> -
+        评论：<span>{{content.comments.length}}</span>
+    </p>
+    <p>{{content.description}}</p>
+    <a href="/view?contentid={{content.id}}" class="btn btn-primary" role="button">阅读全文</a>
+</div>
+{% endfor %}
+
+<div class="listBox clear">
+    <p>
+        {% if page <= 1%}
+        <span class="previous">没有上一页了</span>
+        {%else%}
+        <a class="previous" href="/?category={{category}}&page={{page-1}}">上一页</a>
+        {%endif%}
+
+        {% if pages > 0%}
+        <strong>{{page}} / {{pages}}</strong>
+        {%endif%}
+
+        {%if page >= pages%}
+        <span class="next">没有下一页了</span>
+        {%else%}
+        <a class="next" href="/?category={{category}}&page={{page+1}}">下一页</a>
+        {%endif%}
+    </p>
+</div>
+{%endblock%}

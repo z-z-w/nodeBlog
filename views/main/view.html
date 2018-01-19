@@ -1,0 +1,45 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+    <div class="listBox">
+        <h1 style="text-align: center">{{content.title}}</h1>
+        <p class="info">
+            作者：<span>{{content.user.username}}</span> -
+            时间：<span>{{content.addTime|date('Y-m-d H:i:s', -8*60)}}</span> -
+            阅读：<span>{{content.views}}</span> -
+            评论：<span class="messageCount">{{content.comments.length}}</span>
+        </p>
+        <p>{{content.content}}</p>
+    </div>
+
+    <div class="listBox">
+        <h4 ><strong>评论</strong><span class="em">一共有
+            <em class="messageCount"></em>条评论</span></h4>
+
+        {%if userInfo._id%}
+            <div class="input-group">
+                <textarea  id="messageContent" class="form-control" rows="3"></textarea>
+                <input type="hidden" id="contentId" value="{{content.id}}">
+                <span class="input-group-btn">
+                    <button id="messageBtn" class="btn btn-info submit" type="button">提交</button>
+                </span>
+            </div>
+        {%else%}
+            <p class="bgDanger">你还没有登录，请先登录</p>
+        {%endif%}
+
+        <div class="messageList">
+        </div>
+
+        <div class="listBox clear">
+            <ul class="comment-page">
+                <li class="previous"></li>
+                <li></li>
+                <li class="next"></li>
+            </ul>
+        </div>
+
+    </div>
+
+<script src="../../public/js/comment.js"></script>
+{%endblock%}
